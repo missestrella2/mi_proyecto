@@ -1,11 +1,7 @@
 from rest_framework.views import APIView
-
 from rest_framework.response import Response
-
 from rest_framework import status
-
 from .models import Usuario
-
 from .serializers import UsuarioSerializer
 
 class UsuarioCreateView(APIView):
@@ -21,4 +17,11 @@ class UsuarioCreateView(APIView):
             return Response({"message": "Usuario creado con éxito", "data": serializer.data}, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+from django.shortcuts import render
+
+# Esta vista renderiza la plantilla home.html y devuelve la respuesta.
+def home(request):
+    return render(request, 'home.html')
+
 
